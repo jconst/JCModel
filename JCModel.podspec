@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.public_header_files = 'JCModel/*.h'
-  s.source_files = 'JCModel/*.m'
+  s.source_files = 'JCModel/*'
 
 end
