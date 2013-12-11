@@ -1,9 +1,7 @@
 //
-//  BZModelObject.m
-//  
+//  JCModel.m
 //
 //  Created by Joseph Constantakis on 8/20/13.
-//
 //
 
 #import "JCModel.h"
@@ -14,16 +12,16 @@
 
 #pragma mark - JSON Parsing
 
-- (id)initFromJSON:(id)jsonObject
+- (id)initFromDictionary:(id)jsonObject
 {
     self = [super init];
     if (self) {
-        [self updateWithJSON:jsonObject];
+        [self updateWithDictionary:jsonObject];
     }
     return self;
 }
 
-- (void)updateWithJSON:(id)jsonObject
+- (void)updateWithDictionary:(id)jsonObject
 {
     JCPropertyMapper *mapper = [[JCPropertyMapper alloc] init];
     mapper.defaultDateFormat = [self defaultDateFormat];
@@ -33,7 +31,7 @@
 
 - (NSString *)defaultDateFormat
 {
-    return kDateFormat;
+    return @"yyyy-MM-dd";
 }
 
 - (NSString *)mappingPlistName

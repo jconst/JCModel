@@ -1,6 +1,6 @@
 //
 //  JCPropertyMapper.m
-//  JCPropertyMapper
+//  JCModel
 //
 //  Created by Joseph Constantakis on 10/25/13.
 //  Copyright (c) 2013 Joseph Constantakis. All rights reserved.
@@ -8,7 +8,6 @@
 
 #import "JCPropertyMapper.h"
 #import "NSObject+Properties.h"
-#import "Article.h"
 
 @implementation JCPropertyMapper
 

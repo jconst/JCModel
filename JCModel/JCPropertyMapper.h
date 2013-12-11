@@ -1,6 +1,6 @@
 //
 //  JCPropertyMapper.h
-//  JCPropertyMapper
+//  JCModel
 //
 //  Created by Joseph Constantakis on 10/25/13.
 //  Copyright (c) 2013 Joseph Constantakis. All rights reserved.
@@ -14,7 +14,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JCPropertyMapper : DOSingleton
+@interface JCPropertyMapper : NSObject
 
 - (void)mapJSON:(id)json toObject:(id)object usingMappingPlist:(NSString *)plistName;
 - (void)mapJSON:(id)json toObject:(id)object usingMapping:(NSDictionary *)mapping;

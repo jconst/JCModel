@@ -2,6 +2,22 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:JCModel/NSObject+Properties"
+      name = "NSObject+Properties">
+      <FileRef
+         location = "group:NSObject+Properties.h">
+      </FileRef>
+      <FileRef
+         location = "group:NSObject+Properties.m">
+      </FileRef>
+      <FileRef
+         location = "group:NSString+PropertyKVC.h">
+      </FileRef>
+      <FileRef
+         location = "group:NSString+PropertyKVC.m">
+      </FileRef>
+   </Group>
+   <Group
       location = "container:"
       name = "JCModel">
       <FileRef

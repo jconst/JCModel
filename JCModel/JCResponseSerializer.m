@@ -1,6 +1,6 @@
 //
 //  JCResponseSerializer.m
-//  JCPropertyMapper
+//  JCModel
 //
 //  Created by Joseph Constantakis on 12/10/13.
 //  Copyright (c) 2013 Joseph Constantakis. All rights reserved.
@@ -57,7 +57,7 @@ NSString * const JCResponseSerializerErrorDomain = @"JCResponseSerializerErrorDo
 - (id)nonArrayResponseObjectForJSONObject:(id)object error:(NSError *__autoreleasing *)error
 {
     if ([object isKindOfClass:[NSDictionary class]]) {
-        return [[self.responseObjectClass alloc] initFromJSON:object];
+        return [[self.responseObjectClass alloc] initFromDictionary:object];
     } else {
         if (error) {
             *error = [NSError errorWithDomain:JCResponseSerializerErrorDomain

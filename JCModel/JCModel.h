@@ -1,9 +1,7 @@
 //
-//  BZModelObject.h
-//  
+//  JCModel.h
 //
 //  Created by Joseph Constantakis on 8/20/13.
-//
 //
 
 /**
@@ -15,8 +13,7 @@
 
 @interface JCModel : NSObject
 
-- (NSString *)mappingPlistName;
-- (id)initFromJSON:(id)jsonObject;
-- (void)updateWithJSON:(id)jsonObject;
+- (id)initFromDictionary:(id)jsonObject;
+- (void)updateWithDictionary:(id)jsonObject;
 
 @end
