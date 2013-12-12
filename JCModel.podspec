@@ -4,10 +4,10 @@ Pod::Spec.new do |s|
   s.license  = 'MIT'
   s.summary  = 'A small framework to help with writing model layers in iOS.'
   s.homepage = 'https://github.com/jcon5294/JCModel'
-  s.authors  = { 'Joseph Constantakis' => 'm@mattt.me' }
+  s.authors  = { 'Joseph Constantakis' => 'jcon5294@gmail.com' }
   s.source   = { 
     :git => 'https://github.com/jcon5294/JCModel.git', 
-    :tag => "0.0.1"
+    :tag => "0.0.2"
   }
   s.requires_arc = true
 
