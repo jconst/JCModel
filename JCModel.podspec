@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.authors  = { 'Joseph Constantakis' => 'jcon5294@gmail.com' }
   s.source   = { 
     :git => 'https://github.com/jcon5294/JCModel.git', 
-    :tag => "0.0.2"
+    :tag => "0.0.3"
   }
   s.requires_arc = true
 
