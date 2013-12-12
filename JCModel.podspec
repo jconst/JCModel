@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'JCModel'
-  s.version  = '0.0.1'
+  s.version  = '0.0.3'
   s.license  = 'MIT'
   s.summary  = 'A small framework to help with writing model layers in iOS.'
   s.homepage = 'https://github.com/jcon5294/JCModel'
