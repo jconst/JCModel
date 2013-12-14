@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <Group
-      location = "group:JCModel/NSObject+Properties"
+      location = "group:Classes/NSObject+Properties"
       name = "NSObject+Properties">
       <FileRef
          location = "group:NSObject+Properties.h">
@@ -21,22 +21,16 @@
       location = "container:"
       name = "JCModel">
       <FileRef
-         location = "group:JCModel/JCModel.h">
+         location = "group:Classes/JCModel/JCModel.h">
       </FileRef>
       <FileRef
-         location = "group:JCModel/JCModel.m">
+         location = "group:Classes/JCModel/JCModel.m">
       </FileRef>
       <FileRef
-         location = "group:JCModel/JCPropertyMapper.h">
+         location = "group:Classes/JCModel/JCPropertyMapper.h">
       </FileRef>
       <FileRef
-         location = "group:JCModel/JCPropertyMapper.m">
-      </FileRef>
-      <FileRef
-         location = "group:JCModel/JCResponseSerializer.h">
-      </FileRef>
-      <FileRef
-         location = "group:JCModel/JCResponseSerializer.m">
+         location = "group:Classes/JCModel/JCPropertyMapper.m">
       </FileRef>
    </Group>
 </Workspace>
