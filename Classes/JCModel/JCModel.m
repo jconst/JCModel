@@ -6,7 +6,7 @@
 
 #import "JCModel.h"
 #import "JCPropertyMapper.h"
-
+#import "NSObject+Properties.h"
 
 @implementation JCModel
 
@@ -24,19 +24,23 @@
 - (void)updateWithDictionary:(id)jsonObject
 {
     JCPropertyMapper *mapper = [[JCPropertyMapper alloc] init];
-    mapper.defaultDateFormat = [self defaultDateFormat];
     
     [mapper mapJSON:jsonObject toObject:self usingMappingPlist:[self mappingPlistName]];
-}
-
-- (NSString *)defaultDateFormat
-{
-    return @"yyyy-MM-dd";
 }
 
 - (NSString *)mappingPlistName
 {
     return [NSString stringWithFormat:@"%@Mapping", NSStringFromClass([self class])];
+}
+
+- (NSString *)description
+{
+    NSMutableString *ret = [NSMutableString stringWithString:[super description]];
+    
+    for (NSString *prop in [[self class] propertyNames]) {
+        [ret appendFormat:@"\n%@: %@", prop, [self valueForKey:prop]];
+    }
+    return ret;
 }
 
 @end

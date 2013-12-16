@@ -14,11 +14,11 @@
 
 #import <Foundation/Foundation.h>
 
+#define kAttrDateFormat @"dateFormat"
+
 @interface JCPropertyMapper : NSObject
 
 - (void)mapJSON:(id)json toObject:(id)object usingMappingPlist:(NSString *)plistName;
 - (void)mapJSON:(id)json toObject:(id)object usingMapping:(NSDictionary *)mapping;
-
-@property (strong, nonatomic) NSString *defaultDateFormat;
 
 @end

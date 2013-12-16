@@ -5,20 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>35E314B0-FC30-4FE0-873B-84B0CFFCC00F</string>
+	<string>4DDBF5E5-DE65-4BDB-A405-C3380552E343</string>
 	<key>IDESourceControlProjectName</key>
-	<string>JCModel</string>
+	<string>JCModelExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>42906BC2-748D-40CA-A9F2-D68725EA0E67</key>
 		<string>https://github.com/jcon5294/JCModel.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>JCModel.xcworkspace</string>
+	<string>Project/JCModelExample/JCModelExample.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>42906BC2-748D-40CA-A9F2-D68725EA0E67</key>
-		<string>..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jcon5294/JCModel.git</string>

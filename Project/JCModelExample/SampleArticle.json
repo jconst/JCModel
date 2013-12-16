@@ -1,0 +1,73 @@
+{
+	"id": 4158747,
+	"author": "Louis Bedigian",
+	"created": "Mon, 16 Dec 2013 15:11:26 -0500",
+	"updated": "Mon, 16 Dec 2013 15:11:26 -0500",
+	"title": "Microsoft's First Xbox TV Series Slated For 1H 2014",
+	"teaser": "teaser text",
+    "body": "body text",
+    "url": "http://www.benzinga.com/analyst-ratings/analyst-color/13/12/4158747/microsofts-first-xbox-tv-series-slated-for-1h-2014",
+	"image": "http://cdn4.benzinga.com/files/imagecache/1024x768xUP/images/story/2012/451331653.jpg",
+	"image_thumb": "http://cdn4.benzinga.com/files/imagecache/250x187xUP/images/story/2012/451331653.jpg",
+	"channels": [
+	{
+		"tid": 68,
+		"name": "Analyst Color",
+		"description": ""
+	},
+	{
+		"tid": 57,
+		"name": "News",
+		"description": ""
+	},
+	{
+		"tid": 17374,
+		"name": "Rumors",
+		"description": ""
+	},
+	{
+		"tid": 67,
+		"name": "Analyst Ratings",
+		"description": ""
+	},
+	{
+		"tid": 6,
+		"name": "Tech",
+		"description": ""
+	}
+	],
+	"stocks": [
+	{
+		"tid": 12200,
+		"name": "MSFT",
+		"description": "Microsoft"
+	},
+	{
+		"tid": 11589,
+		"name": "GOOG",
+		"description": "Google"
+	}
+	],
+	"tags": [
+	{
+		"tid": 18978,
+		"name": "Colin Sebastian",
+		"description": ""
+	},
+	{
+		"tid": 128740,
+		"name": "Game of Thrones",
+		"description": ""
+	},
+	{
+		"tid": 29087,
+		"name": "HALO",
+		"description": ""
+	},
+	{
+		"tid": 19713,
+		"name": "Michael Pachter",
+		"description": ""
+	}
+	]
+}

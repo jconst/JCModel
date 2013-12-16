@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>@created.dateFormat</key>
+	<string>E, d MMM y HH:mm:ss Z</string>
+	<key>@updated.dateFormat</key>
+	<string>E, d MMM y HH:mm:ss Z</string>
+	<key>body</key>
+	<string>body</string>
+	<key>created</key>
+	<string>created</string>
+	<key>id</key>
+	<string>identifier</string>
+	<key>image</key>
+	<string>imageURL</string>
+	<key>image_thumb</key>
+	<string>imageThumbURL</string>
+	<key>teaser</key>
+	<string>teaser</string>
+	<key>title</key>
+	<string>title</string>
+	<key>updated</key>
+	<string>updated</string>
+	<key>url</key>
+	<string>url</string>
+	<key>stocks.name</key>
+	<string>tickers</string>
+	<key>channels.tid</key>
+	<string>channelIDs</string>
+</dict>
+</plist>

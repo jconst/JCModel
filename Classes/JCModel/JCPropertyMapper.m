@@ -22,6 +22,9 @@
 {
     for (NSString *remoteKey in mapping) {
         
+        if ([remoteKey hasPrefix:@"@"]) //ignore meta-keys
+            continue;
+        
         id value = [self getValueForKeyPath:remoteKey inCollection:json];
 
         if (!value) {
@@ -35,14 +38,34 @@
         NSString *localKey = mapping[remoteKey];
 
         if ([object hasPropertyNamed:localKey]) {
+            
             Class destClass = [[object class] classOfPropertyNamed:localKey];
-            [object setValue:[self value:value transformedToClass:destClass] forKey:localKey];
+            NSDictionary *attributes = [self attributesForKey:remoteKey inMapping:mapping];
+            id transformed = [self value:value transformedToClass:destClass withAttributes:attributes];
+            [object setValue:transformed forKey:localKey];
         } else
             NSLog(@"mapping error: object %@ has no property named %@", object, localKey);
     }
 }
 
-- (id)value:(id)value transformedToClass:(Class)destClass
+- (NSDictionary *)attributesForKey:(NSString *)remoteKey inMapping:(NSDictionary *)mapping
+{
+    NSString *prefix = [NSString stringWithFormat:@"@%@.", remoteKey];
+    NSMutableDictionary *ret = [NSMutableDictionary dictionary];
+    
+    for (NSString *key in mapping) {
+        if ([key hasPrefix:prefix]) {
+            NSInteger firstDotLocation = [key rangeOfString:@"."].location;
+            NSString *attrKey = [key substringFromIndex:firstDotLocation+1];
+            //e.g. ret[@"dateFormat"] = mapping[@"@created.dateFormat"]
+            ret[attrKey] = mapping[key];
+        }
+    }
+    
+    return ret;
+}
+
+- (id)value:(id)value transformedToClass:(Class)destClass withAttributes:(NSDictionary *)attributes
 {
     if ([[value class] isSubclassOfClass:destClass])
         return value;
@@ -55,7 +78,8 @@
             return [f numberFromString:value];
         } if (destClass == [NSDate class]) {
             NSDateFormatter *f = [[NSDateFormatter alloc] init];
-            [f setDateFormat:self.defaultDateFormat];
+            if (attributes[kAttrDateFormat])
+                [f setDateFormat:attributes[kAttrDateFormat]];
             return [f dateFromString:value];
         }
     }
