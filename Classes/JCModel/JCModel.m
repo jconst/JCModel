@@ -15,12 +15,18 @@
 
 + (NSArray *)sortedArrayFromJSONArray:(NSArray *)array ascending:(BOOL)ascending
 {
+    NSMutableArray *ret = [[self arrayFromJSONArray:array ascending:ascending] mutableCopy];
+    [ret jc_sortAscending:ascending];
+    return ret;
+}
+
++ (NSArray *)arrayFromJSONArray:(NSArray *)array ascending:(BOOL)ascending
+{
     NSMutableArray *ret = [NSMutableArray array];
     for (NSDictionary *dict in array) {
         JCModel *obj = [[self alloc] initFromDictionary:dict];
         [ret addObject:obj];
     }
-    [ret jc_sortAscending:ascending];
     return ret;
 }
 
