@@ -7,7 +7,7 @@
 //
 
 #import "JCPropertyMapper.h"
-#import "NSObject+Properties.h"
+#import <NSObject+Properties.h>
 
 @implementation JCPropertyMapper
 

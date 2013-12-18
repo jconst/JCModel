@@ -10,7 +10,9 @@ Pod::Spec.new do |s|
     :tag => "0.1"
   }
   s.requires_arc = true
+  
+  s.dependency 'NSObjectProperties', '~> 0.0.1'
 
   s.source_files = 'Classes/**/**/*.{h,m}'
-
+  
 end

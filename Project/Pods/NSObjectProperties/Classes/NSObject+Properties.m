@@ -181,6 +181,19 @@
 	return ( [list copy] );
 }
 
++ (NSArray *) namesForPropertiesOfClass:(Class)theClass
+{
+    NSArray *propNames = [self propertyNames];
+    NSMutableArray *ret = [NSMutableArray array];
+    
+    for (NSString *name in propNames) {
+        Class curClass = [self classOfPropertyNamed:name];
+        if ([curClass isSubclassOfClass:theClass])
+            [ret addObject:name];
+    }
+    return ret;
+}
+
 - (BOOL) hasProperties
 {
 	return ( [[self class] hasProperties] );
@@ -206,6 +219,11 @@
 	return ( [[self class] typeOfPropertyNamed: name] );
 }
 
+- (Class)classOfPropertyNamed:(NSString *)propertyName
+{
+    return [[self class] classOfPropertyNamed:propertyName];
+}
+
 - (SEL) getterForPropertyNamed: (NSString *) name
 {
 	return ( [[self class] getterForPropertyNamed: name] );
@@ -224,6 +242,11 @@
 - (NSArray *) propertyNames
 {
 	return ( [[self class] propertyNames] );
+}
+
+- (NSArray *) namesForPropertiesOfClass:(Class)cls
+{
+    return [[self class] namesForPropertiesOfClass:cls];
 }
 
 @end

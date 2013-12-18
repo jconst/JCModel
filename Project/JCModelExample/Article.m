@@ -2,4 +2,9 @@
 
 @implementation Article
 
+- (NSString *)sortKey
+{
+    return @"created";
+}
+
 @end

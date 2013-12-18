@@ -13,7 +13,10 @@
 
 @interface JCModel : NSObject
 
++ (NSArray *)sortedArrayFromJSONArray:(NSArray *)array ascending:(BOOL)ascending;
+
 - (id)initFromDictionary:(id)jsonObject;
 - (void)updateWithDictionary:(id)jsonObject;
+- (NSString *)sortKey;
 
 @end

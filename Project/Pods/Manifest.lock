@@ -1,1 +1,10 @@
+PODS:
+  - NSObjectProperties (0.0.1)
+
+DEPENDENCIES:
+  - NSObjectProperties (~> 0.0.1)
+
+SPEC CHECKSUMS:
+  NSObjectProperties: 2ea33d0b9ff1de5956c6acc903901326f20d5b18
+
 COCOAPODS: 0.23.0

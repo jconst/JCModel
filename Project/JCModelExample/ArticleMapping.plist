@@ -6,6 +6,8 @@
 	<string>E, d MMM y HH:mm:ss Z</string>
 	<key>@updated.dateFormat</key>
 	<string>E, d MMM y HH:mm:ss Z</string>
+	<key>author</key>
+	<string>authors</string>
 	<key>body</key>
 	<string>body</string>
 	<key>created</key>

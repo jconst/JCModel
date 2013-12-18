@@ -7,7 +7,7 @@
 //
 
 #import "JCAppDelegate.h"
-#import "JCModel.h"
+#import "JCPropertyMapper.h"
 #import "Article.h"
 
 @implementation JCAppDelegate
@@ -26,15 +26,15 @@
 
 - (void)tryMapping
 {
-    NSString *json = [[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SampleArticle" ofType:@"json"]
+    NSString *json = [[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SampleArticles" ofType:@"json"]
                                                      encoding:NSUTF8StringEncoding
                                                         error:nil];
     NSError *parseError = nil;
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding]
-                                                         options:0 error:&parseError];
-    NSLog(@"dict: %@, error: %@", dict, parseError);
-    Article *article = [[Article alloc] initFromDictionary:dict];
-    NSLog(@"article: %@", article);
+    NSMutableArray *articlesJSON = [[NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding]
+                                                         options:0 error:&parseError] mutableCopy];
+
+    NSArray *articles = [Article sortedArrayFromJSONArray:articlesJSON ascending:YES];
+    NSLog(@"articles: %@", articles);
 }
 
 @end

@@ -61,6 +61,7 @@
 + (SEL) setterForPropertyNamed: (NSString *) name;
 + (NSString *) retentionMethodOfPropertyNamed: (NSString *) name;		// returns one of: copy, retain, assign
 + (NSArray *) propertyNames;
++ (NSArray *) namesForPropertiesOfClass:(Class)cls;
 
 // instance convenience accessors for above routines (who likes to type [myObj class] all the time ?)
 - (BOOL) hasProperties;
@@ -68,10 +69,12 @@
 - (BOOL) hasPropertyNamed: (NSString *) name ofType: (const char *) type;
 - (BOOL) hasPropertyForKVCKey: (NSString *) key;
 - (const char *) typeOfPropertyNamed: (NSString *) name;
+- (Class)classOfPropertyNamed:(NSString *)propertyName;
 - (SEL) getterForPropertyNamed: (NSString *) name;
 - (SEL) setterForPropertyNamed: (NSString *) name;
 - (NSString *) retentionMethodOfPropertyNamed: (NSString *) name;
 - (NSArray *) propertyNames;
+- (NSArray *) namesForPropertiesOfClass:(Class)cls;
 
 @end
 

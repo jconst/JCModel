@@ -1,0 +1,1 @@
+../../NSObjectProperties/Classes/NSString+PropertyKVC.h
