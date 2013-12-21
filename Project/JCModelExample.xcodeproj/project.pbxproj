@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5524E7ED21A8411397139DB1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBFEBF7201C4F608092DD82 /* libPods.a */; };
+		5F2F3C7318621E6D00F66BA7 /* JCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7018621E6D00F66BA7 /* JCModel.m */; };
+		5F2F3C7418621E6D00F66BA7 /* JCPropertyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7218621E6D00F66BA7 /* JCPropertyMapper.m */; };
+		5F2F3C7918621E7B00F66BA7 /* NSMutableArray+JCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7618621E7B00F66BA7 /* NSMutableArray+JCModel.m */; };
+		5F2F3C7A18621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7818621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.m */; };
+		5F2F3C7E18621F6500F66BA7 /* JCResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7D18621F6500F66BA7 /* JCResponseSerializer.m */; };
+		5F39B744186627BB00EF000F /* NSDictionary+CustomKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F39B743186627BB00EF000F /* NSDictionary+CustomKVC.m */; };
+		5F39B747186627CD00EF000F /* NSArray+CustomKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F39B746186627CD00EF000F /* NSArray+CustomKVC.m */; };
 		5F4108A8185F78A100BDFBB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4108A7185F78A100BDFBB1 /* Foundation.framework */; };
 		5F4108AA185F78A100BDFBB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4108A9185F78A100BDFBB1 /* CoreGraphics.framework */; };
 		5F4108AC185F78A100BDFBB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4108AB185F78A100BDFBB1 /* UIKit.framework */; };
@@ -18,14 +25,10 @@
 		5F4108C1185F78A200BDFBB1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4108C0185F78A200BDFBB1 /* XCTest.framework */; };
 		5F4108C2185F78A200BDFBB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4108A7185F78A100BDFBB1 /* Foundation.framework */; };
 		5F4108C3185F78A200BDFBB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4108AB185F78A100BDFBB1 /* UIKit.framework */; };
-		5F4108E0185F798700BDFBB1 /* JCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4108D8185F798700BDFBB1 /* JCModel.m */; };
-		5F4108E1185F798700BDFBB1 /* JCPropertyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4108DA185F798700BDFBB1 /* JCPropertyMapper.m */; };
 		5F4108E7185F8CE700BDFBB1 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4108E6185F8CE700BDFBB1 /* Article.m */; };
 		5F4108E9185F8F0200BDFBB1 /* ArticleMapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F4108E8185F8F0200BDFBB1 /* ArticleMapping.plist */; };
 		5F4108EB185F996900BDFBB1 /* SampleArticles.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F4108EA185F996900BDFBB1 /* SampleArticles.json */; };
 		5F424DD71862025A000AB997 /* JCModel.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5F424DD61862025A000AB997 /* JCModel.podspec */; };
-		5F8D355F18617059005CA589 /* NSMutableArray+JCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8D355E18617059005CA589 /* NSMutableArray+JCModel.m */; };
-		5F8D35621861763C005CA589 /* NSMutableOrderedSet+JCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8D35611861763C005CA589 /* NSMutableOrderedSet+JCModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,20 @@
 /* Begin PBXFileReference section */
 		1A6E1E0E0A2F4F9B9A9D5041 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		1DBFEBF7201C4F608092DD82 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F2F3C6F18621E6D00F66BA7 /* JCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCModel.h; path = ../Classes/Core/JCModel.h; sourceTree = "<group>"; };
+		5F2F3C7018621E6D00F66BA7 /* JCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCModel.m; path = ../Classes/Core/JCModel.m; sourceTree = "<group>"; };
+		5F2F3C7118621E6D00F66BA7 /* JCPropertyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCPropertyMapper.h; path = ../Classes/Core/JCPropertyMapper.h; sourceTree = "<group>"; };
+		5F2F3C7218621E6D00F66BA7 /* JCPropertyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCPropertyMapper.m; path = ../Classes/Core/JCPropertyMapper.m; sourceTree = "<group>"; };
+		5F2F3C7518621E7B00F66BA7 /* NSMutableArray+JCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+JCModel.h"; path = "../Classes/Core/NSMutableArray+JCModel.h"; sourceTree = "<group>"; };
+		5F2F3C7618621E7B00F66BA7 /* NSMutableArray+JCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+JCModel.m"; path = "../Classes/Core/NSMutableArray+JCModel.m"; sourceTree = "<group>"; };
+		5F2F3C7718621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableOrderedSet+JCModel.h"; path = "../Classes/Core/NSMutableOrderedSet+JCModel.h"; sourceTree = "<group>"; };
+		5F2F3C7818621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableOrderedSet+JCModel.m"; path = "../Classes/Core/NSMutableOrderedSet+JCModel.m"; sourceTree = "<group>"; };
+		5F2F3C7C18621F6500F66BA7 /* JCResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCResponseSerializer.h; sourceTree = "<group>"; };
+		5F2F3C7D18621F6500F66BA7 /* JCResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCResponseSerializer.m; sourceTree = "<group>"; };
+		5F39B742186627BB00EF000F /* NSDictionary+CustomKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CustomKVC.h"; sourceTree = "<group>"; };
+		5F39B743186627BB00EF000F /* NSDictionary+CustomKVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CustomKVC.m"; sourceTree = "<group>"; };
+		5F39B745186627CD00EF000F /* NSArray+CustomKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CustomKVC.h"; sourceTree = "<group>"; };
+		5F39B746186627CD00EF000F /* NSArray+CustomKVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CustomKVC.m"; sourceTree = "<group>"; };
 		5F4108A4185F78A100BDFBB1 /* JCModelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JCModelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4108A7185F78A100BDFBB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5F4108A9185F78A100BDFBB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -54,19 +71,11 @@
 		5F4108B9185F78A200BDFBB1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5F4108BF185F78A200BDFBB1 /* JCModelExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JCModelExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4108C0185F78A200BDFBB1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		5F4108D7185F798700BDFBB1 /* JCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCModel.h; path = ../Classes/JCModel/JCModel.h; sourceTree = "<group>"; };
-		5F4108D8185F798700BDFBB1 /* JCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCModel.m; path = ../Classes/JCModel/JCModel.m; sourceTree = "<group>"; };
-		5F4108D9185F798700BDFBB1 /* JCPropertyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCPropertyMapper.h; path = ../Classes/JCModel/JCPropertyMapper.h; sourceTree = "<group>"; };
-		5F4108DA185F798700BDFBB1 /* JCPropertyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCPropertyMapper.m; path = ../Classes/JCModel/JCPropertyMapper.m; sourceTree = "<group>"; };
 		5F4108E5185F8CE700BDFBB1 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		5F4108E6185F8CE700BDFBB1 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		5F4108E8185F8F0200BDFBB1 /* ArticleMapping.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArticleMapping.plist; sourceTree = "<group>"; };
 		5F4108EA185F996900BDFBB1 /* SampleArticles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SampleArticles.json; sourceTree = "<group>"; };
 		5F424DD61862025A000AB997 /* JCModel.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JCModel.podspec; path = ../JCModel.podspec; sourceTree = "<group>"; };
-		5F8D355D18617059005CA589 /* NSMutableArray+JCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+JCModel.h"; sourceTree = "<group>"; };
-		5F8D355E18617059005CA589 /* NSMutableArray+JCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+JCModel.m"; sourceTree = "<group>"; };
-		5F8D35601861763C005CA589 /* NSMutableOrderedSet+JCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableOrderedSet+JCModel.h"; path = "../Classes/JCModel/NSMutableOrderedSet+JCModel.h"; sourceTree = "<group>"; };
-		5F8D35611861763C005CA589 /* NSMutableOrderedSet+JCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableOrderedSet+JCModel.m"; path = "../Classes/JCModel/NSMutableOrderedSet+JCModel.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +103,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F2F3C7B18621F6500F66BA7 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				5F2F3C7C18621F6500F66BA7 /* JCResponseSerializer.h */,
+				5F2F3C7D18621F6500F66BA7 /* JCResponseSerializer.m */,
+			);
+			name = AFNetworking;
+			path = ../Classes/AFNetworking;
+			sourceTree = "<group>";
+		};
 		5F41089B185F78A100BDFBB1 = {
 			isa = PBXGroup;
 			children = (
@@ -156,11 +175,16 @@
 		5F4108E4185F79A700BDFBB1 /* JCModel */ = {
 			isa = PBXGroup;
 			children = (
+				5F2F3C7B18621F6500F66BA7 /* AFNetworking */,
 				5F424DD518620237000AB997 /* Collections */,
-				5F4108D7185F798700BDFBB1 /* JCModel.h */,
-				5F4108D8185F798700BDFBB1 /* JCModel.m */,
-				5F4108D9185F798700BDFBB1 /* JCPropertyMapper.h */,
-				5F4108DA185F798700BDFBB1 /* JCPropertyMapper.m */,
+				5F2F3C6F18621E6D00F66BA7 /* JCModel.h */,
+				5F2F3C7018621E6D00F66BA7 /* JCModel.m */,
+				5F2F3C7118621E6D00F66BA7 /* JCPropertyMapper.h */,
+				5F2F3C7218621E6D00F66BA7 /* JCPropertyMapper.m */,
+				5F39B742186627BB00EF000F /* NSDictionary+CustomKVC.h */,
+				5F39B743186627BB00EF000F /* NSDictionary+CustomKVC.m */,
+				5F39B745186627CD00EF000F /* NSArray+CustomKVC.h */,
+				5F39B746186627CD00EF000F /* NSArray+CustomKVC.m */,
 			);
 			name = JCModel;
 			sourceTree = "<group>";
@@ -168,10 +192,10 @@
 		5F424DD518620237000AB997 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
-				5F8D355D18617059005CA589 /* NSMutableArray+JCModel.h */,
-				5F8D355E18617059005CA589 /* NSMutableArray+JCModel.m */,
-				5F8D35601861763C005CA589 /* NSMutableOrderedSet+JCModel.h */,
-				5F8D35611861763C005CA589 /* NSMutableOrderedSet+JCModel.m */,
+				5F2F3C7518621E7B00F66BA7 /* NSMutableArray+JCModel.h */,
+				5F2F3C7618621E7B00F66BA7 /* NSMutableArray+JCModel.m */,
+				5F2F3C7718621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.h */,
+				5F2F3C7818621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.m */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -309,13 +333,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F4108E1185F798700BDFBB1 /* JCPropertyMapper.m in Sources */,
+				5F2F3C7A18621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.m in Sources */,
+				5F2F3C7318621E6D00F66BA7 /* JCModel.m in Sources */,
+				5F39B747186627CD00EF000F /* NSArray+CustomKVC.m in Sources */,
+				5F2F3C7418621E6D00F66BA7 /* JCPropertyMapper.m in Sources */,
+				5F39B744186627BB00EF000F /* NSDictionary+CustomKVC.m in Sources */,
 				5F4108B4185F78A200BDFBB1 /* main.m in Sources */,
 				5F4108E7185F8CE700BDFBB1 /* Article.m in Sources */,
-				5F8D35621861763C005CA589 /* NSMutableOrderedSet+JCModel.m in Sources */,
+				5F2F3C7918621E7B00F66BA7 /* NSMutableArray+JCModel.m in Sources */,
 				5F4108B8185F78A200BDFBB1 /* JCAppDelegate.m in Sources */,
-				5F4108E0185F798700BDFBB1 /* JCModel.m in Sources */,
-				5F8D355F18617059005CA589 /* NSMutableArray+JCModel.m in Sources */,
+				5F2F3C7E18621F6500F66BA7 /* JCResponseSerializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
