@@ -13,8 +13,9 @@
 		5F2F3C7918621E7B00F66BA7 /* NSMutableArray+JCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7618621E7B00F66BA7 /* NSMutableArray+JCModel.m */; };
 		5F2F3C7A18621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7818621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.m */; };
 		5F2F3C7E18621F6500F66BA7 /* JCResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7D18621F6500F66BA7 /* JCResponseSerializer.m */; };
-		5F39B744186627BB00EF000F /* NSDictionary+CustomKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F39B743186627BB00EF000F /* NSDictionary+CustomKVC.m */; };
-		5F39B747186627CD00EF000F /* NSArray+CustomKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F39B746186627CD00EF000F /* NSArray+CustomKVC.m */; };
+		5F39B74E1866376500EF000F /* NSArray+CustomKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F39B74B1866376500EF000F /* NSArray+CustomKVC.m */; };
+		5F39B74F1866376500EF000F /* NSDictionary+CustomKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F39B74D1866376500EF000F /* NSDictionary+CustomKVC.m */; };
+		5F39B753186637CB00EF000F /* NSObject+CustomKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F39B752186637CB00EF000F /* NSObject+CustomKVC.m */; };
 		5F4108A8185F78A100BDFBB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4108A7185F78A100BDFBB1 /* Foundation.framework */; };
 		5F4108AA185F78A100BDFBB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4108A9185F78A100BDFBB1 /* CoreGraphics.framework */; };
 		5F4108AC185F78A100BDFBB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4108AB185F78A100BDFBB1 /* UIKit.framework */; };
@@ -54,10 +55,12 @@
 		5F2F3C7818621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableOrderedSet+JCModel.m"; path = "../Classes/Core/NSMutableOrderedSet+JCModel.m"; sourceTree = "<group>"; };
 		5F2F3C7C18621F6500F66BA7 /* JCResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCResponseSerializer.h; sourceTree = "<group>"; };
 		5F2F3C7D18621F6500F66BA7 /* JCResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCResponseSerializer.m; sourceTree = "<group>"; };
-		5F39B742186627BB00EF000F /* NSDictionary+CustomKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CustomKVC.h"; sourceTree = "<group>"; };
-		5F39B743186627BB00EF000F /* NSDictionary+CustomKVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CustomKVC.m"; sourceTree = "<group>"; };
-		5F39B745186627CD00EF000F /* NSArray+CustomKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CustomKVC.h"; sourceTree = "<group>"; };
-		5F39B746186627CD00EF000F /* NSArray+CustomKVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CustomKVC.m"; sourceTree = "<group>"; };
+		5F39B74A1866376500EF000F /* NSArray+CustomKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+CustomKVC.h"; path = "../Classes/Core/NSArray+CustomKVC.h"; sourceTree = "<group>"; };
+		5F39B74B1866376500EF000F /* NSArray+CustomKVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+CustomKVC.m"; path = "../Classes/Core/NSArray+CustomKVC.m"; sourceTree = "<group>"; };
+		5F39B74C1866376500EF000F /* NSDictionary+CustomKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+CustomKVC.h"; path = "../Classes/Core/NSDictionary+CustomKVC.h"; sourceTree = "<group>"; };
+		5F39B74D1866376500EF000F /* NSDictionary+CustomKVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+CustomKVC.m"; path = "../Classes/Core/NSDictionary+CustomKVC.m"; sourceTree = "<group>"; };
+		5F39B751186637CB00EF000F /* NSObject+CustomKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+CustomKVC.h"; path = "../Classes/Core/NSObject+CustomKVC.h"; sourceTree = "<group>"; };
+		5F39B752186637CB00EF000F /* NSObject+CustomKVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+CustomKVC.m"; path = "../Classes/Core/NSObject+CustomKVC.m"; sourceTree = "<group>"; };
 		5F4108A4185F78A100BDFBB1 /* JCModelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JCModelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4108A7185F78A100BDFBB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5F4108A9185F78A100BDFBB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -111,6 +114,19 @@
 			);
 			name = AFNetworking;
 			path = ../Classes/AFNetworking;
+			sourceTree = "<group>";
+		};
+		5F39B7501866376A00EF000F /* CustomKVC */ = {
+			isa = PBXGroup;
+			children = (
+				5F39B74A1866376500EF000F /* NSArray+CustomKVC.h */,
+				5F39B74B1866376500EF000F /* NSArray+CustomKVC.m */,
+				5F39B74C1866376500EF000F /* NSDictionary+CustomKVC.h */,
+				5F39B74D1866376500EF000F /* NSDictionary+CustomKVC.m */,
+				5F39B751186637CB00EF000F /* NSObject+CustomKVC.h */,
+				5F39B752186637CB00EF000F /* NSObject+CustomKVC.m */,
+			);
+			name = CustomKVC;
 			sourceTree = "<group>";
 		};
 		5F41089B185F78A100BDFBB1 = {
@@ -177,14 +193,11 @@
 			children = (
 				5F2F3C7B18621F6500F66BA7 /* AFNetworking */,
 				5F424DD518620237000AB997 /* Collections */,
+				5F39B7501866376A00EF000F /* CustomKVC */,
 				5F2F3C6F18621E6D00F66BA7 /* JCModel.h */,
 				5F2F3C7018621E6D00F66BA7 /* JCModel.m */,
 				5F2F3C7118621E6D00F66BA7 /* JCPropertyMapper.h */,
 				5F2F3C7218621E6D00F66BA7 /* JCPropertyMapper.m */,
-				5F39B742186627BB00EF000F /* NSDictionary+CustomKVC.h */,
-				5F39B743186627BB00EF000F /* NSDictionary+CustomKVC.m */,
-				5F39B745186627CD00EF000F /* NSArray+CustomKVC.h */,
-				5F39B746186627CD00EF000F /* NSArray+CustomKVC.m */,
 			);
 			name = JCModel;
 			sourceTree = "<group>";
@@ -333,14 +346,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F39B74F1866376500EF000F /* NSDictionary+CustomKVC.m in Sources */,
 				5F2F3C7A18621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.m in Sources */,
 				5F2F3C7318621E6D00F66BA7 /* JCModel.m in Sources */,
-				5F39B747186627CD00EF000F /* NSArray+CustomKVC.m in Sources */,
 				5F2F3C7418621E6D00F66BA7 /* JCPropertyMapper.m in Sources */,
-				5F39B744186627BB00EF000F /* NSDictionary+CustomKVC.m in Sources */,
+				5F39B753186637CB00EF000F /* NSObject+CustomKVC.m in Sources */,
 				5F4108B4185F78A200BDFBB1 /* main.m in Sources */,
 				5F4108E7185F8CE700BDFBB1 /* Article.m in Sources */,
 				5F2F3C7918621E7B00F66BA7 /* NSMutableArray+JCModel.m in Sources */,
+				5F39B74E1866376500EF000F /* NSArray+CustomKVC.m in Sources */,
 				5F4108B8185F78A200BDFBB1 /* JCAppDelegate.m in Sources */,
 				5F2F3C7E18621F6500F66BA7 /* JCResponseSerializer.m in Sources */,
 			);
