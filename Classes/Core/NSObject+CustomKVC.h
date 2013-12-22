@@ -10,4 +10,7 @@
 
 @interface NSObject (CustomKVC)
 
+///Reimplementation of valueForKeyPath that calls jc_valueForKey instead of valueForKey
+- (id)jc_valueForKeyPath:(NSString *)keyPath;
+
 @end

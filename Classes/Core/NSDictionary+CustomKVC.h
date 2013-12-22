@@ -10,8 +10,6 @@
 
 @interface NSDictionary (CustomKVC)
 
-- (id)jc_valueForKeyPath:(NSString *)keyPath;
-
 ///Adds support for * wildcard to valueForKey
 - (id)jc_valueForKey:(NSString *)key;
 

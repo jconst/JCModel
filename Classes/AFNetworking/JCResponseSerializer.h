@@ -10,16 +10,18 @@
 #import "JCModel.h"
 
 /**
- 'JCJSONResponseSerializer' is a response serializer for AFNetworking. Untested.
+ 'JCResponseSerializer' is a response serializer for AFNetworking.
  */
 
-@interface JCJSONResponseSerializer : AFJSONResponseSerializer
+@interface JCResponseSerializer : AFJSONResponseSerializer
 
 @end
 
-@interface JCModel (JCJSONResponseSerializer)
+@interface JCModel (JCResponseSerializer)
 
-+ (JCJSONResponseSerializer *)jc_jsonResponseSerializer;
-+ (JCJSONResponseSerializer *)jc_jsonArrayResponseSerializer;
++ (JCResponseSerializer *)responseSerializer;
++ (JCResponseSerializer *)arrayResponseSerializer;
++ (JCResponseSerializer *)responseSerializerWithRootKeyPath:(NSString *)rootKeyPath;
++ (JCResponseSerializer *)arrayResponseSerializerWithRootKeyPath:(NSString *)rootKeyPath;
 
 @end

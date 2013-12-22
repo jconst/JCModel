@@ -7,7 +7,7 @@
 #import "JCModel.h"
 #import "JCPropertyMapper.h"
 #import "NSMutableArray+JCModel.h"
-#import <NSObject+Properties.h>
+#import "NSObject+Properties.h"
 
 @implementation JCModel
 
@@ -15,12 +15,12 @@
 
 + (NSArray *)sortedArrayFromJSONArray:(NSArray *)array ascending:(BOOL)ascending
 {
-    NSMutableArray *ret = [[self arrayFromJSONArray:array ascending:ascending] mutableCopy];
+    NSMutableArray *ret = [[self arrayFromJSONArray:array] mutableCopy];
     [ret jc_sortAscending:ascending];
     return ret;
 }
 
-+ (NSArray *)arrayFromJSONArray:(NSArray *)array ascending:(BOOL)ascending
++ (NSArray *)arrayFromJSONArray:(NSArray *)array
 {
     NSMutableArray *ret = [NSMutableArray array];
     for (NSDictionary *dict in array) {

@@ -10,8 +10,6 @@
 
 @interface NSArray (CustomKVC)
 
-- (id)jc_valueForKeyPath:(NSString *)keyPath;
-
 ///@return result of calling jc_valueForKey: on each element (if supported),
 /// or valueForKey: if not.
 - (id)jc_valueForKey:(NSString *)key;

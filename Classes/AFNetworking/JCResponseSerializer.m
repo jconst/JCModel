@@ -7,25 +7,30 @@
 //
 
 #import "JCResponseSerializer.h"
+#import "NSDictionary+CustomKVC.h"
+#import "NSObject+CustomKVC.h"
 #import "JCPropertyMapper.h"
-#import "JCModel.h"
 
 NSString * const JCResponseSerializerErrorDomain = @"JCResponseSerializerErrorDomain";
 
-@interface JCJSONResponseSerializer ()
+@interface JCResponseSerializer ()
 
 @property (readonly) Class responseObjectClass;
 @property (readonly) BOOL inArray;
+@property (readonly) NSString *rootKeyPath;
 
 @end
 
-@implementation JCJSONResponseSerializer
+@implementation JCResponseSerializer
 
-- (instancetype)initWithResponseObjectClass:(Class)responseObjectClass inArray:(BOOL)inArray
+- (instancetype)initWithResponseObjectClass:(Class)responseObjectClass
+                                    inArray:(BOOL)inArray
+                                rootKeyPath:(NSString *)rootKeyPath
 {
     if (self = [super init]) {
         _responseObjectClass = responseObjectClass;
         _inArray = inArray;
+        _rootKeyPath = rootKeyPath;
     }
     return self;
 }
@@ -33,17 +38,7 @@ NSString * const JCResponseSerializerErrorDomain = @"JCResponseSerializerErrorDo
 - (id)arrayResponseObjectForJSONObject:(id)object error:(NSError *__autoreleasing *)error
 {
     if ([object isKindOfClass:[NSArray class]]) {
-        NSMutableArray *responseObjects = [NSMutableArray array];
-        for (id element in object) {
-            id responseObject = [self nonArrayResponseObjectForJSONObject:element
-                                                                    error:error];
-            if (responseObject) {
-                [responseObjects addObject:responseObject];
-            } else {
-                return nil;
-            }
-        }
-        return responseObjects;
+        return [self.responseObjectClass arrayFromJSONArray:object];
     } else {
         if (error) {
             *error = [NSError errorWithDomain:JCResponseSerializerErrorDomain
@@ -77,6 +72,9 @@ NSString * const JCResponseSerializerErrorDomain = @"JCResponseSerializerErrorDo
     NSDictionary *jsonDict = [super responseObjectForResponse:response
                                                          data:data
                                                         error:error];
+    if (self.rootKeyPath) {
+        jsonDict = [jsonDict jc_valueForKeyPath:self.rootKeyPath];
+    }
     
     //TODO: Error checking
     
@@ -93,12 +91,20 @@ NSString * const JCResponseSerializerErrorDomain = @"JCResponseSerializerErrorDo
 
 @implementation JCModel (JCResponseSerializer)
 
-+ (JCJSONResponseSerializer *)jc_jsonResponseSerializer {
-    return [[JCJSONResponseSerializer alloc] initWithResponseObjectClass:self inArray:NO];
++ (JCResponseSerializer *)responseSerializer {
+    return [[JCResponseSerializer alloc] initWithResponseObjectClass:self inArray:NO rootKeyPath:nil];
 }
 
-+ (JCJSONResponseSerializer *)jc_jsonArrayResponseSerializer {
-    return [[JCJSONResponseSerializer alloc] initWithResponseObjectClass:self inArray:YES];
++ (JCResponseSerializer *)arrayResponseSerializer {
+    return [[JCResponseSerializer alloc] initWithResponseObjectClass:self inArray:YES rootKeyPath:nil];
+}
+
++ (JCResponseSerializer *)responseSerializerWithRootKeyPath:(NSString *)rootKeyPath {
+    return [[JCResponseSerializer alloc] initWithResponseObjectClass:self inArray:NO rootKeyPath:rootKeyPath];
+}
+
++ (JCResponseSerializer *)arrayResponseSerializerWithRootKeyPath:(NSString *)rootKeyPath {
+    return [[JCResponseSerializer alloc] initWithResponseObjectClass:self inArray:YES rootKeyPath:rootKeyPath];
 }
 
 @end
