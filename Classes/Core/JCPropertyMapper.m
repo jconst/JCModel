@@ -14,29 +14,29 @@
 
 @implementation JCPropertyMapper
 
-- (void)mapJSON:(id)json toObject:(id)object usingMappingPlist:(NSString *)plistName
+- (void)mapJSON:(id)src toObject:(id)object usingMappingPlist:(NSString *)plistName
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"];
     NSDictionary *plist = [[NSDictionary alloc] initWithContentsOfFile:path];
-    [self mapJSON:json toObject:object usingMapping:plist];
+    [self mapJSON:src toObject:object usingMapping:plist];
 }
 
-- (void)mapJSON:(id)json toObject:(id)object usingMapping:(NSDictionary *)mapping
+- (void)mapJSON:(id)src toObject:(id)object usingMapping:(NSDictionary *)mapping
 {
-    for (NSString *remoteKey in mapping) {
+    for (NSString *unresolvedRemoteKey in mapping) {
         
-        [self resolveDynamicAttributesInRemoteKey:remoteKey json:json object:object mapping:mapping];
+        NSString *localKey = mapping[unresolvedRemoteKey];
+
+        NSString *remoteKey = [self resolveDynamicAttributesInRemoteKey:unresolvedRemoteKey source:src object:object mapping:mapping];
             
         if ([remoteKey hasPrefix:@"@"] && ![remoteKey hasPrefix:@"@("]) //ignore meta-keys
             continue;
         
-        NSString *localKey = mapping[remoteKey];
-        
-        [self mapRemoteKey:remoteKey inJSON:json toLocalKey:localKey inObject:object withMapping:mapping];
+        [self mapRemoteKey:remoteKey fromSource:src toLocalKey:localKey inObject:object withMapping:mapping];
     }
 }
 
-- (void)resolveDynamicAttributesInRemoteKey:(NSString *)remoteKey json:(id)json object:(id)object mapping:(NSDictionary *)mapping
+- (NSString *)resolveDynamicAttributesInRemoteKey:(NSString *)remoteKey source:(id)src object:(id)object mapping:(NSDictionary *)mapping
 {
     //Use regex to check for dynamic nesting attributes in the style of
     //https://github.com/RestKit/RestKit/wiki/Object-mapping#handling-dynamic-nesting-attributes
@@ -54,27 +54,33 @@
          NSRange resultRange = result.range;
          NSRange capGroup1 = [result rangeAtIndex:1];
          
-         //replace stock.@(tickers) with stock.*
+         //e.g. given json "stock": {"AAPL": "Apple Inc."} & mapping remote key stock.@(ticker), assign @"AAPL" to local key "ticker"
          NSString *localKey = [remoteKey substringWithRange:capGroup1];
-         NSString *remoteKeyPrefix = [remoteKey substringToIndex:resultRange.location];
-         NSString *remoteSubKey = [NSString stringWithFormat:@"%@*", remoteKeyPrefix];
+         NSString *remoteKeyPrefix = resultRange.location ? [remoteKey substringToIndex:resultRange.location] : @"";
+         NSString *remoteSubKey = [remoteKeyPrefix stringByAppendingString:@"$"];
          
-         [self mapRemoteKey:remoteSubKey inJSON:json toLocalKey:localKey inObject:object withMapping:mapping];
-     }];
+         [self mapRemoteKey:remoteSubKey fromSource:src toLocalKey:localKey inObject:object withMapping:mapping];
+    }];
+    
+    //replace stock.@(tickers) with stock.*
+    return [regex stringByReplacingMatchesInString:remoteKey
+                                           options:0
+                                             range:NSMakeRange(0, remoteKey.length)
+                                      withTemplate:@"\\*"];
 }
 
 - (void)mapRemoteKey:(NSString *)remoteKey
-              inJSON:(id)json
+          fromSource:(id)src
           toLocalKey:(NSString *)localKey
             inObject:(id)object
          withMapping:(NSDictionary *)mapping
 {
-    id value = [json jc_valueForKeyPath:remoteKey];
-    
+    id value = [src jc_valueForKeyPath:remoteKey];
     if (!value) {
-        NSLog(@"mapping error: json dictionary %@ has no value for key path %@", json, remoteKey);
+        NSLog(@"mapping error: remote source %@ has no value for key path %@", src, remoteKey);
         return;
-    } else if (value == [NSNull null]) {
+    }
+    if (value == [NSNull null]) {
         value = nil;
     }
     
@@ -84,8 +90,9 @@
         NSDictionary *attributes = [self attributesForKey:remoteKey inMapping:mapping];
         id transformed = [self value:value transformedToClass:destClass withAttributes:attributes];
         [object setValue:transformed forKey:localKey];
-    } else
+    } else {
         NSLog(@"mapping error: object %@ has no property named %@", object, localKey);
+    }
 }
 
 - (NSDictionary *)attributesForKey:(NSString *)remoteKey inMapping:(NSDictionary *)mapping
@@ -95,8 +102,7 @@
     
     for (NSString *key in mapping) {
         if ([key hasPrefix:prefix]) {
-            NSInteger firstDotLocation = [key rangeOfString:@"."].location;
-            NSString *attrKey = [key substringFromIndex:firstDotLocation+1];
+            NSString *attrKey = [key substringFromIndex:prefix.length];
             //e.g. ret[@"dateFormat"] = mapping[@"@created.dateFormat"]
             ret[attrKey] = mapping[key];
         }
@@ -109,8 +115,6 @@
 {
     if ([[value class] isSubclassOfClass:destClass])
         return value;
-    if (destClass == [NSString class])
-        return [value description];
     if ([[value class] isSubclassOfClass:[NSString class]]) {
         if (destClass == [NSNumber class]) {
             NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
@@ -132,7 +136,13 @@
             return [NSOrderedSet orderedSetWithArray:value];
         if (destClass == [NSMutableOrderedSet class])
             return [NSMutableOrderedSet orderedSetWithArray:value];
+        if (destClass == [NSString class]) {
+            if ([value count] == 1 && [value[0] isKindOfClass:[NSString class]])
+                return value[0];
+        }
     }
+    if (destClass == [NSString class])
+        return [value description];
     NSLog(@"failed to transform value %@ to class %@", value, destClass);
     return value;
 }

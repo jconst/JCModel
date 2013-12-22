@@ -75,7 +75,7 @@ NSString * const JCResponseSerializerErrorDomain = @"JCResponseSerializerErrorDo
     if (self.rootKeyPath) {
         jsonDict = [jsonDict jc_valueForKeyPath:self.rootKeyPath];
     }
-    
+
     //TODO: Error checking
     
     if (self.inArray) {

@@ -14,6 +14,8 @@
 {
     if ([key isEqualToString:@"*"])
         return [self allValues];
+    else if ([key isEqualToString:@"$"])
+        return [self allKeys];
     else
         return [self valueForKey:key];
 }
