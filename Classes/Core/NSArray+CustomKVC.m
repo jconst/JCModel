@@ -12,6 +12,11 @@
 
 - (id)jc_valueForKey:(NSString *)key
 {
+    NSScanner *scanner = [NSScanner scannerWithString:key];
+    NSInteger intValue = 0;
+    
+    if ([scanner scanInteger:&intValue] && [scanner isAtEnd])
+        return self[intValue];
     NSMutableArray *ret = [NSMutableArray array];
     for (id value in self) {
         if ([value respondsToSelector:@selector(jc_valueForKey:)])
