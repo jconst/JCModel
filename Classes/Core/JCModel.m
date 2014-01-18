@@ -8,6 +8,7 @@
 #import "JCPropertyMapper.h"
 #import "NSMutableArray+JCModel.h"
 #import "NSObject+Properties.h"
+#import "NSBundle+PList.h"
 
 @implementation JCModel
 
@@ -41,17 +42,84 @@
 
 - (void)updateWithDictionary:(id)jsonObject
 {
-    JCPropertyMapper *mapper = [[JCPropertyMapper alloc] init];
-    
-    [mapper mapJSON:jsonObject toObject:self usingMappingPlist:[self mappingPlistName]];
+    [JCPropertyMapper mapDictionary:jsonObject toObject:self usingMapping:[[self class] remotePropertyMapping]];
 }
 
-- (NSString *)mappingPlistName
++ (id)remotePropertyMapping
 {
-    return [NSString stringWithFormat:@"%@Mapping", NSStringFromClass([self class])];
+    NSString *plistName = [self mappingPlistName];
+    
+    return [[NSBundle mainBundle] plistNamed:plistName] ?: [self propertyNames];
+}
+
++ (NSString *)mappingPlistName
+{
+    return [NSString stringWithFormat:@"%@Mapping", NSStringFromClass(self)];
+}
+
+#pragma mark - Equality
+
++ (NSArray *)equalityKeys
+{
+    return [self propertyNames];
+}
+
+- (NSUInteger)hash
+{
+    NSInteger ret = 0;
+    
+    for (NSString *key in [[self class] equalityKeys]) {
+        ret ^= [[self valueForKey:key] hash];
+    }
+    return ret;
+}
+
+- (BOOL)isEqual:(id)other
+{
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[JCModel class]])
+        return NO;
+    return [self isEqualToModelObject:other];
+}
+
+- (BOOL)isEqualToModelObject:(JCModel *)other
+{
+    if (self == other)
+        return YES;
+    
+    NSSet *eqKeys = [NSSet setWithArray:[[self class] equalityKeys]];
+    NSSet *theirKeys = [NSSet setWithArray:[[other class] equalityKeys]];
+    
+    if (![eqKeys isEqualToSet:theirKeys])
+        return NO;
+    
+    for (NSString *key in eqKeys) {
+        id myValue = [self valueForKey:key];
+        id theirValue = [other valueForKey:key];
+        if (![myValue isEqual:theirValue])
+            return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Helpers
+
++ (NSString *)sortKey
+{
+    //tries to guess a reasonable default sort key
+    if ([self hasPropertyNamed:@"created"]) return @"created";
+    if ([self hasPropertyNamed:@"createdDate"]) return @"createdDate";
+    if ([self hasPropertyNamed:@"date"]) return @"date";
+    if ([self hasPropertyNamed:@"name"]) return @"name";
+    if ([self hasPropertyNamed:@"title"]) return @"title";
+    NSArray *dateProps = [self namesForPropertiesOfClass:[NSDate class]];
+    if (dateProps.count)
+        return dateProps[0];
+    if ([self hasPropertyNamed:@"id"]) return @"id";
+    if ([self hasPropertyNamed:@"identifier"]) return @"identifier";
+    return nil;
+}
 
 - (NSString *)description
 {
@@ -61,21 +129,6 @@
         [ret appendFormat:@"\n%@: %@", prop, [self valueForKey:prop]];
     }
     return ret;
-}
-
-- (NSString *)sortKey
-{
-    //tries to guess a reasonable default sort key
-    if ([self hasPropertyNamed:@"created"]) return @"created";
-    if ([self hasPropertyNamed:@"name"]) return @"name";
-    if ([self hasPropertyNamed:@"title"]) return @"title";
-    if ([self hasPropertyNamed:@"date"]) return @"date";
-    NSArray *dateProps = [self namesForPropertiesOfClass:[NSDate class]];
-    if (dateProps.count)
-        return dateProps[0];
-    if ([self hasPropertyNamed:@"id"]) return @"id";
-    if ([self hasPropertyNamed:@"identifier"]) return @"identifier";
-    return nil;
 }
 
 @end

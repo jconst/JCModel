@@ -18,6 +18,11 @@
 
 - (id)initFromDictionary:(id)jsonObject;
 - (void)updateWithDictionary:(id)jsonObject;
-- (NSString *)sortKey;
+
+//Meant to be overridden:
++ (id)remotePropertyMapping;
++ (NSString *)mappingPlistName;
++ (NSString *)sortKey;
++ (NSArray *)equalityKeys;
 
 @end

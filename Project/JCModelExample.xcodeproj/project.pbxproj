@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5524E7ED21A8411397139DB1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBFEBF7201C4F608092DD82 /* libPods.a */; };
+		5F152C0E186A3DA500FB8311 /* NSBundle+PList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F152C0D186A3DA500FB8311 /* NSBundle+PList.m */; };
 		5F2F3C7318621E6D00F66BA7 /* JCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7018621E6D00F66BA7 /* JCModel.m */; };
 		5F2F3C7418621E6D00F66BA7 /* JCPropertyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7218621E6D00F66BA7 /* JCPropertyMapper.m */; };
 		5F2F3C7918621E7B00F66BA7 /* NSMutableArray+JCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F3C7618621E7B00F66BA7 /* NSMutableArray+JCModel.m */; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		1A6E1E0E0A2F4F9B9A9D5041 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		1DBFEBF7201C4F608092DD82 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F152C0C186A3DA500FB8311 /* NSBundle+PList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+PList.h"; path = "../Classes/Core/NSBundle+PList.h"; sourceTree = "<group>"; };
+		5F152C0D186A3DA500FB8311 /* NSBundle+PList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+PList.m"; path = "../Classes/Core/NSBundle+PList.m"; sourceTree = "<group>"; };
 		5F2F3C6F18621E6D00F66BA7 /* JCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCModel.h; path = ../Classes/Core/JCModel.h; sourceTree = "<group>"; };
 		5F2F3C7018621E6D00F66BA7 /* JCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCModel.m; path = ../Classes/Core/JCModel.m; sourceTree = "<group>"; };
 		5F2F3C7118621E6D00F66BA7 /* JCPropertyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCPropertyMapper.h; path = ../Classes/Core/JCPropertyMapper.h; sourceTree = "<group>"; };
@@ -106,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F152C0F186A3DB300FB8311 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5F152C0C186A3DA500FB8311 /* NSBundle+PList.h */,
+				5F152C0D186A3DA500FB8311 /* NSBundle+PList.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		5F2F3C7B18621F6500F66BA7 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				5F2F3C7B18621F6500F66BA7 /* AFNetworking */,
+				5F152C0F186A3DB300FB8311 /* Helpers */,
 				5F424DD518620237000AB997 /* Collections */,
 				5F39B7501866376A00EF000F /* CustomKVC */,
 				5F2F3C6F18621E6D00F66BA7 /* JCModel.h */,
@@ -347,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F39B74F1866376500EF000F /* NSDictionary+CustomKVC.m in Sources */,
+				5F152C0E186A3DA500FB8311 /* NSBundle+PList.m in Sources */,
 				5F2F3C7A18621E7B00F66BA7 /* NSMutableOrderedSet+JCModel.m in Sources */,
 				5F2F3C7318621E6D00F66BA7 /* JCModel.m in Sources */,
 				5F2F3C7418621E6D00F66BA7 /* JCPropertyMapper.m in Sources */,

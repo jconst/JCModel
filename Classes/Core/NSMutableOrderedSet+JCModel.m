@@ -14,9 +14,9 @@
 - (void)jc_sortAscending:(BOOL)ascending
 {
     if (self.count) {
-        id firstObject = self[0];
-        if ([[firstObject class] isSubclassOfClass:[JCModel class]]) {
-            NSString *sortKey = [firstObject sortKey];
+        Class firstClass = [self[0] class];
+        if ([firstClass isSubclassOfClass:[JCModel class]]) {
+            NSString *sortKey = [firstClass sortKey];
             if (sortKey) {
                 NSSortDescriptor *sortDesc = [NSSortDescriptor sortDescriptorWithKey:sortKey ascending:ascending];
                 [self sortUsingDescriptors:@[sortDesc]];

@@ -11,18 +11,29 @@
 #import "NSDictionary+CustomKVC.h"
 #import "NSArray+CustomKVC.h"
 #import "NSObject+CustomKVC.h"
+#import "NSBundle+PList.h"
 
 @implementation JCPropertyMapper
 
-- (void)mapJSON:(id)src toObject:(id)object usingMappingPlist:(NSString *)plistName
++ (BOOL)mapDictionary:(id)src toObject:(id)object usingMappingPlist:(NSString *)plistName
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"];
-    NSDictionary *plist = [[NSDictionary alloc] initWithContentsOfFile:path];
-    [self mapJSON:src toObject:object usingMapping:plist];
+    id plist = [[NSBundle mainBundle] plistNamed:plistName];
+    if (!plist)
+        return NO;
+    
+    [self mapDictionary:src toObject:object usingMapping:plist];
+    return YES;
 }
 
-- (void)mapJSON:(id)src toObject:(id)object usingMapping:(NSDictionary *)mapping
++ (void)mapDictionary:(id)src toObject:(id)object usingMapping:(id)idTypeMapping
 {
+    NSAssert(object, @"destination object cannot be nil");
+    NSAssert(src, @"source object cannot be nil");
+    
+    NSDictionary *mapping = [idTypeMapping isKindOfClass:[NSArray class]]
+                            ? [NSDictionary dictionaryWithObjects:idTypeMapping forKeys:idTypeMapping]
+                            : idTypeMapping;
+    
     for (NSString *unresolvedRemoteKey in mapping) {
         
         NSString *localKey = mapping[unresolvedRemoteKey];
@@ -36,7 +47,7 @@
     }
 }
 
-- (NSString *)resolveDynamicAttributesInRemoteKey:(NSString *)remoteKey source:(id)src object:(id)object mapping:(NSDictionary *)mapping
++ (NSString *)resolveDynamicAttributesInRemoteKey:(NSString *)remoteKey source:(id)src object:(id)object mapping:(NSDictionary *)mapping
 {
     //Use regex to check for dynamic nesting attributes in the style of
     //https://github.com/RestKit/RestKit/wiki/Object-mapping#handling-dynamic-nesting-attributes
@@ -69,7 +80,7 @@
                                       withTemplate:@"\\*"];
 }
 
-- (void)mapRemoteKey:(NSString *)remoteKey
++ (void)mapRemoteKey:(NSString *)remoteKey
           fromSource:(id)src
           toLocalKey:(NSString *)localKey
             inObject:(id)object
@@ -95,7 +106,7 @@
     }
 }
 
-- (NSDictionary *)attributesForKey:(NSString *)remoteKey inMapping:(NSDictionary *)mapping
++ (NSDictionary *)attributesForKey:(NSString *)remoteKey inMapping:(NSDictionary *)mapping
 {
     NSString *prefix = [NSString stringWithFormat:@"@%@.", remoteKey];
     NSMutableDictionary *ret = [NSMutableDictionary dictionary];
@@ -111,14 +122,22 @@
     return ret;
 }
 
-- (id)value:(id)value transformedToClass:(Class)destClass withAttributes:(NSDictionary *)attributes
++ (id)value:(id)value transformedToClass:(Class)destClass withAttributes:(NSDictionary *)attributes
 {
+    if (!value)
+        return value;
     if ([[value class] isSubclassOfClass:destClass])
         return value;
     if ([[value class] isSubclassOfClass:[NSString class]]) {
         if (destClass == [NSNumber class]) {
             NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
+            if ([value rangeOfString:@"%"].location != NSNotFound)
+                [f setNumberStyle:NSNumberFormatterPercentStyle];
+            if ([value characterAtIndex:0] == '+')
+                [f setPositivePrefix:@"+"];
+            else if ([value characterAtIndex:0] == '-')
+                [f setNegativePrefix:@"-"];
             return [f numberFromString:value];
         } if (destClass == [NSDate class]) {
             NSDateFormatter *f = [[NSDateFormatter alloc] init];

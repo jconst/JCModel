@@ -18,7 +18,8 @@
 
 @interface JCPropertyMapper : NSObject
 
-- (void)mapJSON:(id)json toObject:(id)object usingMappingPlist:(NSString *)plistName;
-- (void)mapJSON:(id)json toObject:(id)object usingMapping:(NSDictionary *)mapping;
+///@return YES if a plist with name 'plistName' could be found and opened
++ (BOOL)mapDictionary:(id)json toObject:(id)object usingMappingPlist:(NSString *)plistName;
++ (void)mapDictionary:(id)json toObject:(id)object usingMapping:(NSDictionary *)mapping;
 
 @end
