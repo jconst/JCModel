@@ -3,7 +3,7 @@
 //  JCModel
 //
 //  Created by Joseph Constantakis on 12/10/13.
-//  Copyright (c) 2013 Jonah Grant. All rights reserved.
+//  Copyright (c) 2013 Joseph Constantakis. All rights reserved.
 //
 
 #import "AFURLResponseSerialization.h"

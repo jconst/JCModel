@@ -52,5 +52,5 @@
 #define COCOAPODS_POD_AVAILABLE_NSObjectProperties
 #define COCOAPODS_VERSION_MAJOR_NSObjectProperties 0
 #define COCOAPODS_VERSION_MINOR_NSObjectProperties 0
-#define COCOAPODS_VERSION_PATCH_NSObjectProperties 1
+#define COCOAPODS_VERSION_PATCH_NSObjectProperties 3
 

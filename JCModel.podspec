@@ -3,11 +3,11 @@ Pod::Spec.new do |s|
   s.version  = '0.2'
   s.license  = 'MIT'
   s.summary  = 'A small framework to help with writing model layers in iOS.'
-  s.homepage = 'https://github.com/jcon5294/JCModel'
+  s.homepage = 'https://github.com/jconst/JCModel'
   s.authors  = { 'Joseph Constantakis' => 'jcon5294@gmail.com' }
   s.platform = :ios, '6.0'
   s.source   = { 
-    :git => 'https://github.com/jcon5294/JCModel.git', 
+    :git => 'https://github.com/jconst/JCModel.git', 
     :tag => "0.2"
   }
   s.requires_arc = true
@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
   s.subspec 'AFNetworking' do |af|
     af.source_files = 'Classes/AFNetworking/*.{h,m}'
     af.dependency 'AFNetworking', '~> 2.0'
+    af.dependency 'JCModel/Core'
   end
 
 end
