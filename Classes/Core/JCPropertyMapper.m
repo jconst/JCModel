@@ -15,7 +15,7 @@
 
 @implementation JCPropertyMapper
 
-+ (BOOL)mapDictionary:(id)src toObject:(id)object usingMappingPlist:(NSString *)plistName
++ (BOOL)mapDictionary:(id)src toObject:(id <JCPropertyMappee>)object usingMappingPlist:(NSString *)plistName
 {
     id plist = [[NSBundle mainBundle] plistNamed:plistName];
     if (!plist)
@@ -25,7 +25,7 @@
     return YES;
 }
 
-+ (void)mapDictionary:(id)src toObject:(id)object usingMapping:(id)idTypeMapping
++ (void)mapDictionary:(id)src toObject:(id <JCPropertyMappee>)object usingMapping:(id)idTypeMapping
 {
     NSAssert(object, @"destination object cannot be nil");
     NSAssert(src, @"source object cannot be nil");
@@ -47,7 +47,10 @@
     }
 }
 
-+ (NSString *)resolveDynamicAttributesInRemoteKey:(NSString *)remoteKey source:(id)src object:(id)object mapping:(NSDictionary *)mapping
++ (NSString *)resolveDynamicAttributesInRemoteKey:(NSString *)remoteKey
+                                           source:(id)src
+                                           object:(id <JCPropertyMappee>)object
+                                          mapping:(NSDictionary *)mapping
 {
     //Use regex to check for dynamic nesting attributes in the style of
     //https://github.com/RestKit/RestKit/wiki/Object-mapping#handling-dynamic-nesting-attributes
@@ -83,7 +86,7 @@
 + (void)mapRemoteKey:(NSString *)remoteKey
           fromSource:(id)src
           toLocalKey:(NSString *)localKey
-            inObject:(id)object
+            inObject:(id/* <JCPropertyMappee>*/)object
          withMapping:(NSDictionary *)mapping
 {
     id value = [src jc_valueForKeyPath:remoteKey];
@@ -99,7 +102,15 @@
         
         Class destClass = [[object class] classOfPropertyNamed:localKey];
         NSDictionary *attributes = [self attributesForKey:remoteKey inMapping:mapping];
-        id transformed = [self value:value transformedToClass:destClass withAttributes:attributes];
+        
+        id transformed;
+        if ([object respondsToSelector:@selector(transformValue:forLocalKey:)]) {
+            transformed = [[object class] transformValue:value forLocalKey:localKey];
+        }
+        if (!transformed) {
+            transformed = [self value:value transformedToClass:destClass withAttributes:attributes];
+        }
+        
         [object setValue:transformed forKey:localKey];
     } else {
         NSLog(@"mapping error: object %@ has no property named %@", object, localKey);
@@ -144,6 +155,8 @@
             if (attributes[kAttrDateFormat])
                 [f setDateFormat:attributes[kAttrDateFormat]];
             return [f dateFromString:value];
+        } if (destClass == [NSURL class]) {
+            return [NSURL URLWithString:value];
         }
     }
     if ([[value class] isSubclassOfClass:[NSArray class]]) {

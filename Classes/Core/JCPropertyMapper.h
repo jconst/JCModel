@@ -16,10 +16,17 @@
 
 #define kAttrDateFormat @"dateFormat"
 
+@protocol JCPropertyMappee <NSObject>
+
+@optional
++ (id)transformValue:(id)value forLocalKey:(NSString *)key;
+
+@end
+
 @interface JCPropertyMapper : NSObject
 
 ///@return YES if a plist with name 'plistName' could be found and opened
-+ (BOOL)mapDictionary:(id)json toObject:(id)object usingMappingPlist:(NSString *)plistName;
-+ (void)mapDictionary:(id)json toObject:(id)object usingMapping:(NSDictionary *)mapping;
++ (BOOL)mapDictionary:(id)json toObject:(id <JCPropertyMappee>)object usingMappingPlist:(NSString *)plistName;
++ (void)mapDictionary:(id)json toObject:(id <JCPropertyMappee>)object usingMapping:(NSDictionary *)mapping;
 
 @end

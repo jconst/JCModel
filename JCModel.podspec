@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   }
   s.requires_arc = true
 
-  # s.dependency 'NSObjectProperties', '~> 0.0.2'
+  s.dependency 'NSObjectProperties', '~> 0.0.3'
 
   s.subspec 'Core' do |c|
     c.source_files = 'Classes/Core/*.{h,m}'

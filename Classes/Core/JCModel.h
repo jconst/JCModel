@@ -10,8 +10,9 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "JCPropertyMapper.h"
 
-@interface JCModel : NSObject
+@interface JCModel : NSObject <JCPropertyMappee>
 
 + (NSArray *)arrayFromJSONArray:(NSArray *)array;
 + (NSArray *)sortedArrayFromJSONArray:(NSArray *)array ascending:(BOOL)ascending;

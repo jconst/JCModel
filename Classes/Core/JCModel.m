@@ -5,7 +5,6 @@
 //
 
 #import "JCModel.h"
-#import "JCPropertyMapper.h"
 #import "NSMutableArray+JCModel.h"
 #import "NSObject+Properties.h"
 #import "NSBundle+PList.h"
