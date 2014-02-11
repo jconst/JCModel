@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'JCModel'
-  s.version  = '0.1'
+  s.version  = '0.2'
   s.license  = 'MIT'
   s.summary  = 'A small framework to help with writing model layers in iOS.'
   s.homepage = 'https://github.com/jcon5294/JCModel'
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.platform = :ios, '6.0'
   s.source   = { 
     :git => 'https://github.com/jcon5294/JCModel.git', 
-    :tag => "0.1"
+    :tag => "0.2"
   }
   s.requires_arc = true
 
